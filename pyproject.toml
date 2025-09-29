@@ -5,3 +5,18 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = []
+
+[tool.uv]
+dev-dependencies = []
+
+[project.scripts]
+server = "servers.server:main"
+client = "clients.client:main"
+multi-server = "servers.multi_server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["servers", "clients"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
