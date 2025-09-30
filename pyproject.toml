@@ -4,7 +4,10 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "fastapi>=0.118.0",
+    "uvicorn>=0.37.0",
+]
 
 [tool.uv]
 dev-dependencies = []
@@ -13,6 +16,7 @@ dev-dependencies = []
 server = "servers.server:main"
 client = "clients.client:main"
 multi-server = "servers.multi_server:main"
+fastapi-server = "servers.fastapi_server:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["servers", "clients"]
