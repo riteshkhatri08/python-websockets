@@ -3,6 +3,7 @@ from fastapi.responses import HTMLResponse
 import uvicorn
 
 app = FastAPI()
+
 html = """
 <!DOCTYPE html>
 <html>
@@ -42,7 +43,7 @@ html = """
 async def say_hello():
     return "Hi There!"
 
-
+#  Returns an html page which has the chat interface and connects to backend websocket
 @app.get("/")
 async def get():
     return HTMLResponse(html)
@@ -51,10 +52,12 @@ async def get():
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     try:
+        print("Websocket :" , websocket)
+        # accept the webocket connnection
         await websocket.accept()
         while True:
             data = await websocket.receive_text()
-            await websocket.send_text(f"Message text was: {data}")
+            await websocket.send_text(f"{data}")
     except WebSocketDisconnect:
         print("Client disconnected")
 

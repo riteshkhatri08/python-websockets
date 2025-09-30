@@ -18,6 +18,7 @@ server = "servers.server:main"
 client = "clients.client:main"
 multi-server = "servers.multi_server:main"
 fastapi-server = "servers.fastapi_server:main"
+fastapi-client = "clients.fastapi_client:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["servers", "clients"]
